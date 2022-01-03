@@ -1,0 +1,93 @@
+
+
+
+
+
+<form [formGroup]="stdForm" (ngSubmit)="getData(stdForm.value)">
+    <div class="form-group">
+        <label>Enter Your FullName:</label>
+        <input type="text" name="stdName" class="form-control" formControlName="stdName">
+        <div *ngIf= "stdForm.get('stdName').invalid && stdForm.get('stdName').touched">
+            <div class="alert alert-danger" *ngIf= "stdForm.get('stdName').errors.required">
+                This field is required   
+            </div>
+            <div class="alert alert-danger" *ngIf= "stdForm.get('stdName').errors.pattern">
+                Name field must contain only character min 3 and max 30 
+            </div>
+        </div>
+    </div>
+    <br/>
+    <form [formGroup]="stdForm" (ngSubmit)="getData(stdForm.value)">
+    <div class="form-group">
+        <label>Enter Your City:</label>
+        <input type="text" name="stdCity" class="form-control" formControlName="stdCity">
+        <div *ngIf= "stdForm.get('stdCity').invalid && stdForm.get('stdCity').touched">
+            <div class="alert alert-danger" *ngIf= "stdForm.get('stdCity').errors.required">
+                This field is required   
+            </div>
+    </div>
+    </div>
+    <br/>
+    <div class="form-group">
+        <label>Enter Your Email Id:</label>
+        <input type="text" name="stdEmail" class="form-control" formControlName="stdEmail">
+        <div *ngIf= "stdForm.get('stdEmail').invalid && stdForm.get('stdEmail').touched">
+            <div class="alert alert-danger" *ngIf= "stdForm.get('stdEmail').errors.required">
+                This field is required   
+            </div>
+            <div class="alert alert-danger" *ngIf= "stdForm.get('stdEmail').errors.pattern">
+                Email id should contain character 5 min and max 12 
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="form-group">
+        <label>Enter Your Contact:</label>
+        <input type="text" name="stdPhone" class="form-control" formControlName="stdPhone">
+        <div *ngIf= "stdForm.get('stdPhone').invalid && stdForm.get('stdPhone').touched">
+            <div class="alert alert-danger" *ngIf= "stdForm.get('stdPhone').errors.required">
+                This field is required   
+            </div>
+            <div class="alert alert-danger" *ngIf= "stdForm.get('stdPhone').errors.pattern">
+                10 number should be contain only
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Enter Your PanNumber:</label>
+        <input type="text" name="pan" class="form-control" formControlName="pan">
+        <div *ngIf= "stdForm.get('pan').invalid && stdForm.get('pan').touched">
+            <div class="alert alert-danger" *ngIf= "stdForm.get('pan').errors.required">
+                This field is required   
+            </div>
+            <div class="alert alert-danger" *ngIf= "stdForm.get('pan').errors.pattern">
+                10 number should be contain only
+            </div>
+        </div>
+    </div>
+    <div class="form-check form-group">
+    <label class="form-check-label"></label>
+    <input type="checkbox" name="stdTerm" class="form-check-input"  formControlName="stdTerm">
+    I agree with your terms and condtions
+    <div *ngIf= "stdForm.get('stdTerm').invalid && stdForm.get('stdTerm').touched">
+        <div class="alert alert-danger">
+            This field is required   
+        </div>
+    </div>
+</div>
+<br/>
+
+
+<div class="row m-3">
+    <button class="btn btn-primary col-2  m-3" (click)="getOTP()">Get OTP</button>
+    <button class="btn btn-primary col-2  m-3" (click)="resendOTP()">Resend OTP</button>
+  </div>
+  <div class="form-group row m-3">
+    <label for="OTP" class="col-2">OTP</label>
+    <input type="number" class="form-control-md col-4" id="exampleInputPassword1" >
+  </div>
+  <button  class="btn btn-primary m-3" (click)="verifyOTP()">Verify OTP</button>
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="stdForm.invalid">Submit</button>
+</form>
